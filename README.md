@@ -1,10 +1,8 @@
 # Node.js com serverless framework
 
-> Este é o projeto de exemplo para o curso [Node.js com serverless framework](tbd) na Alura.
+> Este é o projeto de exemplo do curso [Node.js com serverless framework](tbd) da Alura.
 
-Este projeto tem como objetivo guiar seu aprendizado durante o curso, e para isso, ele está dividido em branches, cada um com um objetivo diferente. Cada branch representa um passo do curso, e você pode navegar entre elas para ver o código de cada etapa.
-
-Além disso, existem dois branches: `completo-vm` e `completo-serverless`, cada um com sua própria documentação, que contém os códigos completos do projeto em cada um dos ambientes que ele está rodando.
+Este projeto teve como objetivo guiar meu aprendizado durante o curso.
 
 ## Executando localmente
 
