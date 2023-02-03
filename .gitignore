@@ -39,9 +39,12 @@ bower_components
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
-# Dependency directories
-node_modules/
-jspm_packages/
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
@@ -173,7 +176,8 @@ tags
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
