@@ -29,7 +29,7 @@ module.exports.sendResponse = async(event) => {
   }
 
   const resultId = randomUUID()
-  previousResults.set(resultId, { response: req.body, result })
+  previousResults.set(resultId, { response: {name, answers}, result })
   
   return {
     statusCode: 201,
@@ -47,7 +47,7 @@ module.exports.sendResponse = async(event) => {
 }
 
 module.exports.getResponse = async(event) => {
-  const result = previousResults.get(evetn.pathParameters.id)
+  const result = previousResults.get(event.pathParameters.id)
   if (!result) {
     return {
       statusCode: 404,

@@ -11,7 +11,7 @@ functions:
     events:
       - httpApi:
           path: /api/results
-          mehtod: post
+          method: post
           request:
             schemas:
               application/json: ${file(./schemas/sendResponse.json)}
@@ -20,4 +20,7 @@ functions:
     events:  
       - httpApi:
           path: /api/results/{id}
-          mehtod: get
+          method: get
+
+plugins:
+  - serverless-offline
