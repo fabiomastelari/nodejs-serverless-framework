@@ -24,5 +24,7 @@
     "serverless": "^3.24.1",
     "serverless-offline": "^12.0.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "mongodb": "^4.12.1"
+  }
 }
