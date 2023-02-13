@@ -1,10 +1,15 @@
 const { MongoClient, ObjectId } = require('mongodb')
 const { pbkdf2Sync } = require('crypto')
 
+let connectionInstance = null
+
 async function connectToDatabase () {
+  if (connectionInstance) return connectionInstance
+  
   const client = new MongoClient(process.env.MONGODB_CONNECTIONSTRING)
   const connection = await client.connect()
-  return connection.db(process.env.MONGODB_DB_NAME)
+  connectionInstance = connection.db(process.env.MONGODB_DB_NAME)
+  return connectionInstance
 }
 
 async function basicAuth(event) {
@@ -27,8 +32,8 @@ async function basicAuth(event) {
 
   const [username, password] = Buffer.from(credentials, 'base64').toString().split(':')
 
-  const hashedPass = pbkdf2Sync(password, process.env.salt, 100000, 64, 'sha512').toString('hex')
-
+  const hashedPass = pbkdf2Sync(password, process.env.SALT, 100000, 64, 'sha512').toString('hex')
+  console.log(hashedPass)
   const client = await connectToDatabase()
   const collection = await client.collection('users')
   const user = await collection.findOne({
