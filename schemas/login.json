@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "LoginInputModel",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string",
+      "minLength": 1
+    },    
+    "password": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": ["username","password"]
+}
