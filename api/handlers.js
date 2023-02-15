@@ -4,14 +4,16 @@ const { createToken, authorize, makeHash } = require('./auth')
 const { countCorrectAnswers } = require('./answers')
 
 function extractBody(event) {
-  if (!event?.body) {
-    return buildResponse(442, { error: 'Missing body' },{})
+  if (!event.body) {
+    return buildResponse(442, { error: 'Missing body', event },{})
   }
   return JSON.parse(event.body)
 }
 
 module.exports.login = async (event) => {
-  const {username, password} = extractBody(event)
+  const extractedBody = extractBody(event)
+  if(extractedBody.statusCode) return extractedBody
+  const {username, password} = extractedBody
   const hashedPass = makeHash(password)
   const user = await getUserByCredentials(username, hashedPass)
 

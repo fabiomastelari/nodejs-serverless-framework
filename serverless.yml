@@ -6,6 +6,7 @@ frameworkVersion: '3'
 params:
   default:
     dbName: alura-serverless
+    dbTimeout: 5000
   dev:
     connectionString: mongodb://localhost:27017/${self:params.default.dbName}
     salt: K28pc3Ia7ToWO8Ub6Iunq0D1c6NsXuUc
@@ -15,11 +16,15 @@ params:
 provider:
   name: aws
   runtime: nodejs14.x
+  timeout: 10
+  tracing:
+    lambda: true
   environment:
     MONGODB_CONNECTIONSTRING: ${param:connectionString}
     MONGODB_DB_NAME: ${param:dbName}
     SALT: ${param.salt}
     JWT_SECRET: ${param.jwtSecret}
+    MONGODB_TIMEOUT:  ${param.dbTimeout}
 
 functions:
   sendResponse:
